@@ -19,10 +19,10 @@ export async function addQuote(quoteText) {
 	console.log(quotesJSON);
 	return quote;
 }
-addQuote('Five four three two one');
-// addQuote('Testing 1');
-// addQuote('Testing 2');
-// addQuote('Testing 3');
+// await addQuote('Five four three two one');
+// await addQuote('Testing 1');
+// await addQuote('Testing 2');
+// await addQuote('Testing 3');
 // addQuote('TEST2');
 
 export async function getQuotes() {
@@ -37,7 +37,7 @@ export async function getRandomQuote() {
     console.log(randomQuote)
     return allQuotes[randomQuote] 
 }
-console.log(getRandomQuote())
+console.log(await getRandomQuote())
 
 export async function editQuote(id, quoteText) {}
 
