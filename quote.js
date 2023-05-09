@@ -19,7 +19,7 @@ export async function addQuote(quoteText) {
 	console.log(quotesJSON);
 	return quote;
 }
-// await addQuote('Five four three two one');
+await addQuote('Five four three two one');
 // await addQuote('Testing 1');
 // await addQuote('Testing 2');
 // await addQuote('Testing 3');
