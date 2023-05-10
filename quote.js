@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import { v4 as uuidv4 } from 'uuid';
-
 const fileName = 'quotes.json';
+
 const quotes = [];
 
 // Ticket 2b - ADD/SAVE ---------------------------------------------------
