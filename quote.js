@@ -16,7 +16,7 @@ export async function addQuote(quoteText) {
 
 	// write quotes data
 	await fs.writeFile(fileName, quotesJSON, 'utf-8');
-	console.log(quotesJSON);
+	
 	return quote;
 }
 await addQuote('Five four three two one');
@@ -25,20 +25,72 @@ await addQuote('Five four three two one');
 // await addQuote('Testing 3');
 // addQuote('TEST2');
 
+
+
 export async function getQuotes() {
 	// read all quotes
 	return JSON.parse(await fs.readFile(fileName, 'utf-8'));
 }
 
+
+
 export async function getRandomQuote() {
+    // get the data
     const data = await fs.readFile(fileName, 'utf-8')
+    // parse the data into a JS array
     const allQuotes = JSON.parse(data)
-    let randomQuote = Math.floor(Math.random()*allQuotes.length)
-    console.log(randomQuote)
-    return allQuotes[randomQuote] 
+    // get a random index number and assign it to a variable
+    let randomIndex = Math.floor(Math.random()*allQuotes.length)
+    // return the random index of the data
+    return allQuotes[randomIndex] 
 }
-console.log(await getRandomQuote())
 
-export async function editQuote(id, quoteText) {}
 
-export async function deleteQuote(id) {}
+
+
+export async function editQuote(id, quoteText) {
+    // get the data
+    const dataJSON = await fs.readFile(fileName, "utf-8")
+    // parse the data into a new variable
+    const quotes = JSON.parse(dataJSON)
+    // create a new variable to return at the end. Either null / new quote
+    let quote = null
+    // Loop through the variable array
+    for (let i = 0 ; i<quotes.length ; i++) {
+        if (quotes[i].id === id) {
+            // if the data id is equal to the id...
+            quote = quotes[i];
+            // set a new variable to be the selected quote index
+            quotes[i].quoteText = quoteText;
+            // replace the quoteText in the index to be the new given quoteText
+            break;
+        }  
+    }
+    // write the new quote into the data file   
+    await fs.writeFile(fileName, JSON.stringify(quotes))
+    // return the quote. Either: null / new quote
+    return quote
+    } ;
+
+
+
+export async function deleteQuote(id) {
+    const dataJSON = await fs.readFile(fileName, "utf-8")
+    const quotes = JSON.parse(dataJSON);
+
+    let quoteIndex = null;
+
+    for (let i = 0 ; i<quotes.length ; i++) {
+        if (quotes[i].id === id) {
+            quoteIndex = i;
+            break;
+            }
+        }
+    if (quoteIndex !== null) {
+        const deletedQuote = quotes.splice(quoteIndex, 1);
+        await fs.writeFile(fileName, JSON.stringify(quotes), "utf-8");
+        return deletedQuote[0];
+        }
+    return null;
+}
+

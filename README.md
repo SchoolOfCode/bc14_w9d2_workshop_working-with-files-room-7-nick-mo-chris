@@ -139,7 +139,7 @@ The function should:
 
 - not take in any arguments ✅
 - read/parse all quote objects from `quotes.json` ✅
-- return a single randomly selected quote object 
+- return a single randomly selected quote object ✅
 
 🧪 This ticket has an automated test. Once you think your solution works run the following command:
 
@@ -157,12 +157,12 @@ Inside `quote.js` find the `editQuote` function.
 
 The function should:
 
-- take in an `id` (String) as the 1st argument and `quoteText` (String) as the 2nd
-- read/parse all quote objects from `quotes.json`
-- find the existing quote object with a matching id
-- update and save the matching quote object so that it contains the new `quoteText`
-- return null if there is no matching id
-- return the edited quote object if a matching id is found
+- take in an `id` (String) as the 1st argument and `quoteText` (String) as the 2nd ✅
+- read/parse all quote objects from `quotes.json` ✅
+- find the existing quote object with a matching id ✅
+- update and save the matching quote object so that it contains the new `quoteText` ✅
+- return null if there is no matching id ✅
+- return the edited quote object if a matching id is found ✅
 
 🧪 This ticket has an automated test. Once you think your solution works run the following command:
 
@@ -180,8 +180,8 @@ Inside `quote.js` find the `deleteQuote` function.
 
 The function should:
 
-- take in a single argument `id` (String)
-- read/parse all quote objects from `quotes.json`
+- take in a single argument `id` (String) ✅
+- read/parse all quote objects from `quotes.json` ✅
 - find the existing quote object with a matching id
 - remove the matching quote object
 - save the new list of quote objects to `quotes.json`
